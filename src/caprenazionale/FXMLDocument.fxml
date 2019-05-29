@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.FlowPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane fx:id="root" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="627.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="caprenazionale.FXMLDocumentController">
+   <top>
+      <MenuBar BorderPane.alignment="CENTER">
+        <menus>
+          <Menu mnemonicParsing="false" text="File">
+            <items>
+                  <MenuItem mnemonicParsing="false" onAction="#CaricaFile" text="Carica..." />
+                  <MenuItem fx:id="mnuSalva" mnemonicParsing="false" onAction="#SalvaFile" text="Salva..." />
+                  <MenuItem fx:id="mnuEsporta" mnemonicParsing="false" onAction="#esportaXML" text="Esporta XML..." />
+              <MenuItem fx:id="mnuClose" mnemonicParsing="false" onAction="#chiudi" text="Close" />
+            </items>
+          </Menu>
+          <Menu mnemonicParsing="false" text="Naviga">
+            <items>
+                  <MenuItem fx:id="mnuSuccessivo" mnemonicParsing="false" onAction="#vaiAlSuccessivo" text="Successivo" />
+              <MenuItem fx:id="mnuPrecedente" mnemonicParsing="false" onAction="#vaiAlPrecedente" text="Precedente" />
+            </items>
+          </Menu>
+            <Menu mnemonicParsing="false" text="Ordina">
+              <items>
+                <MenuItem fx:id="mnuMerge" mnemonicParsing="false" onAction="#mergeSort" text="MergeSort" />
+                  <MenuItem fx:id="mnuMergeParallelo" mnemonicParsing="false" onAction="#mergeSortParallelo" text="MergeSort parallelo" />
+              </items>
+            </Menu>
+        </menus>
+      </MenuBar>
+   </top>
+   <center>
+      <VBox prefHeight="341.0" prefWidth="557.0" BorderPane.alignment="CENTER">
+         <children>
+            <Label fx:id="lblCodice" prefHeight="35.0" prefWidth="740.0" style="-fx-background-color: yellow;" text="Codice capra:">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Label>
+            <FlowPane hgap="5.0" prefHeight="71.0" prefWidth="600.0" vgap="20.0">
+               <children>
+                  <Label text="Stato riproduttivo">
+                     <font>
+                        <Font size="14.0" />
+                     </font></Label>
+                  <ChoiceBox fx:id="choStatoRiproduttivo" prefWidth="158.0" style="-fx-opacity: 1.0;" />
+                  <Label alignment="CENTER_RIGHT" prefHeight="20.0" prefWidth="120.0" text="Stato produttivo" textAlignment="RIGHT">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Label>
+                  <ChoiceBox fx:id="choStatoProduttivo" prefWidth="150.0" style="-fx-opacity: 1.0;" />
+                  <Label text="N. Lattazioni">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="txtNLattazioni" prefHeight="25.0" prefWidth="81.0" style="-fx-opacity: 0.7;" />
+                  <Label text="Kg latte">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="txtLatte" prefHeight="25.0" prefWidth="106.0" style="-fx-opacity: 0.7;" />
+                  <Label text="Giorni lattazione">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="txtGiorni" prefHeight="25.0" prefWidth="89.0" style="-fx-opacity: 0.7;" />
+               </children>
+            </FlowPane>
+            <HBox prefHeight="65.0" prefWidth="557.0">
+               <children>
+                  <Label prefHeight="20.0" prefWidth="130.0" text="Data di nascita">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Label>
+                  <DatePicker fx:id="dateNascita" style="-fx-opacity: 1.0;" />
+               </children>
+               <padding>
+                  <Insets bottom="30.0" top="30.0" />
+               </padding>
+            </HBox>
+            <HBox prefHeight="162.0" prefWidth="557.0">
+               <children>
+                  <Label prefWidth="130.0" text="Data ultimo parto">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Label>
+                  <DatePicker fx:id="dateParto" style="-fx-opacity: 1.0;" />
+               </children>
+               <padding>
+                  <Insets bottom="10.0" top="10.0" />
+               </padding>
+            </HBox>
+            <HBox alignment="TOP_RIGHT" prefHeight="76.0" prefWidth="557.0">
+               <children>
+                  <Button fx:id="btnEdit" mnemonicParsing="false" onAction="#edita" text="Modifica">
+                     <HBox.margin>
+                        <Insets right="20.0" />
+                     </HBox.margin>
+                  </Button>
+               </children>
+            </HBox>
+         </children>
+      </VBox>
+   </center>
+   <left>
+      <Button fx:id="btnPrecedente" mnemonicParsing="false" onAction="#vaiAlPrecedente" prefHeight="285.0" prefWidth="25.0" text="&lt;" BorderPane.alignment="CENTER">
+         <BorderPane.margin>
+            <Insets right="10.0" />
+         </BorderPane.margin>
+      </Button>
+   </left>
+   <right>
+      <Button fx:id="btnSuccessivo" mnemonicParsing="false" onAction="#vaiAlSuccessivo" prefHeight="285.0" prefWidth="25.0" text="&gt;" BorderPane.alignment="CENTER">
+         <BorderPane.margin>
+            <Insets left="10.0" />
+         </BorderPane.margin>
+      </Button>
+   </right>
+</BorderPane>
